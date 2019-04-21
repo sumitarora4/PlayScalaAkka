@@ -27,6 +27,8 @@ class Altimeter extends Actor with ActorLogging{
     case RateChange(amount) =>
       
       rateOfClimb = amount.min(1.0f).max(-1.0f) * maxRateofclimb 
+      log info (s"Altimeter changed rate of climb to $rateOfClimb")
+      
   }
   
   
