@@ -20,7 +20,7 @@ class Altimeter extends Actor with ActorLogging{
   var altitude = 0d
   
   var lastTick = System.currentTimeMillis()
-  val ticker = context.system.scheduler.schedule(100, 100, self, Tick)
+//  val ticker = context.system.scheduler.schedule(100 millis, 100 millis, self, Tick)/
   
   case object Tick
   
@@ -38,6 +38,6 @@ class Altimeter extends Actor with ActorLogging{
   }
   
   // Kill the ticker when we stop
-  override def postStop(): Unit = ticker.cancel
+//  override def postStop(): Unit = ticker.cancel
     
 }
