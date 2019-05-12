@@ -13,8 +13,9 @@ val playVersion = "2.6.6"
 libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "4.0.1" % Test
 libraryDependencies += "com.h2database" % "h2" % "1.4.197"
-libraryDependencies += "com.typesafe.play" %% "play-slick" % "3.0.0"
+libraryDependencies += "com.typesafe.play" %% "play-slick" % "3.0.3"
 libraryDependencies += "com.typesafe.play" %% "play-json" % playVersion
+libraryDependencies += "io.strongtyped" %% "active-slick" % "0.3.5" 
 
 scalacOptions ++= Seq(
   "-feature",

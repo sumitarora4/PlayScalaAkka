@@ -9,8 +9,9 @@ import play.api.libs.json.JsSuccess
 import play.api.libs.json.Json
 import play.api.mvc.AbstractController
 import play.api.mvc.ControllerComponents
+import com.aroratimus.services.TraitsService
 
-class TraitsController @Inject() (cc: ControllerComponents)(implicit ec: ExecutionContext) extends AbstractController(cc) {
+class TraitsController @Inject() (cc: ControllerComponents, traitsService: TraitsService)(implicit ec: ExecutionContext) extends AbstractController(cc) {
 
   def recompute = Action(parse.json) {
     req =>
@@ -21,6 +22,9 @@ class TraitsController @Inject() (cc: ControllerComponents)(implicit ec: Executi
 
         TraitJsonModelResult match {
           case s: JsSuccess[TraitJsonModel] => {
+            
+            traitsService.recomputeSparkJob(requestJson.toString())
+            
             println("result found"+s.get)
             Ok(Json.obj("status" -> "recompute submitted", "data" -> "Recompute has begun"))
           }
